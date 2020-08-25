@@ -1,8 +1,5 @@
 <?php
-
-
 // Finances
-=======
 // Ledger Controller
 $route = env('PACKAGE_ROUTE', '').'/ledger/';
 $controller = 'Increment\Finance\Http\LedgerController@';
@@ -33,7 +30,6 @@ Route::post($route.'retrieve', $controller."retrieveIntent");
 Route::post($route.'create_payment', $controller."createEntry");
 Route::post($route.'payment_methods', $controller."retrievePaymentMethods");
 Route::post($route.'pay_purchase', $controller."payByCreditCard");
-=======
 
 
 // Withdrawals Controller
