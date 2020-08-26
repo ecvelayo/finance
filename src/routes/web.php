@@ -30,10 +30,6 @@ Route::post($route.'retrieve', $controller."retrieveIntent");
 Route::post($route.'create_payment', $controller."createEntry");
 Route::post($route.'payment_methods', $controller."retrievePaymentMethods");
 Route::post($route.'pay_purchase', $controller."payByCreditCard");
-<<<<<<< HEAD
-
-=======
->>>>>>> 92e9a9e2051023414b35e1d725848cd22c42fa84
 
 
 // Withdrawals Controller
