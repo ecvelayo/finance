@@ -26,23 +26,13 @@ class CCDCController extends APIController
             'type' => 'card',
             'details' => [
                 'card_number' => $details['card_number'],
-                'exp_month' => $details['exp_month'],
-                'exp_year' => $details['exp_year'],
+                'exp_month' => intval($details['exp_month']),
+                'exp_year' => intval($details['exp_year']),
                 'cvc' => $details['cvc'],
             ],
-            'billing' => [
-                'address' => [
-                    'line1' => $details['line1'],
-                    'city' => $details['city'],
-                    'state' => $details['state'],
-                    'country' => $details['country'],
-                    'postal_code' => $details['postal_code'],
-                ],
-                'name' => $details['name'],
-                'email' => $details['email'],
-                'phone' => $details['phone']
-            ],
-        ]);
+                'name' => $details['name']
+            ]
+        );
         return ($paymentMethod->getData());
     }
  
@@ -67,8 +57,9 @@ class CCDCController extends APIController
     public function payByCreditCard(Request $request){
         $details = $request->all();
         $payables = $this->createPaymentIntent($details);
-        $mop = $this->createPaymentMethod($payment);
-        $paymentIntentId = $payables['id'];
-        $paymentMethodId = $mop['id'];
+        $mop = $this->createPaymentMethod($details);
+        $paymentIntent = Paymongo::paymentIntent()->find($payables['id']);
+        $successfulPayment = $paymentIntent->attach($mop['id']);
+        return $successfulPayment->getData();
     }
 }
