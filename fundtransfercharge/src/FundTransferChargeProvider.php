@@ -1,10 +1,10 @@
 <?php
 
-namespace Increment\Finance\FundTransfer;
+namespace Increment\Finance\FundTransferCharge;
 
 use Illuminate\Support\ServiceProvider;
 
-class FundTransferChargesProvider extends ServiceProvider{
+class FundTransferChargeProvider extends ServiceProvider{
 
   public function boot(){
     $this->loadMigrationsFrom(__DIR__.'/migrations');

@@ -1,10 +1,14 @@
 {
-    "name": "user/fund_transfer",
+    "name": "finance/fund_transfer_charge",
     "description": "fund transfer",
     "authors": [
         {
             "name": "Ean Jason Velayo",
             "email": "ecvelayo@gmail.com"
+        }, 
+        {
+            "name": "Kennette Canales",
+            "email": "kennettecanales@gmail.com"
         }
     ],
     "require": {}
