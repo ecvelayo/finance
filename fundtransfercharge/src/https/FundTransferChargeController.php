@@ -4,7 +4,7 @@ namespace Increment\Finance\FundTransferCharge\Http;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\APIController;
-use Increment\Finance\FundTransfer\Models\FundTransferCharge;
+use Increment\Finance\FundTransferCharge\Models\FundTransferCharge;
 
 class FundTransferChargeController extends Controller
 {
