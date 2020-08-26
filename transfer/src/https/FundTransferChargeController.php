@@ -1,10 +1,10 @@
 <?php
 
-namespace Increment\Finance\FundTransferCharge\Http;
+namespace Increment\Finance\Transfer\Http;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\APIController;
-use Increment\Finance\FundTransferCharge\Models\FundTransferCharge;
+use Increment\Finance\Transfer\Models\FundTransferCharge;
 
 class FundTransferChargeController extends Controller
 {

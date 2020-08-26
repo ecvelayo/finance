@@ -1,5 +1,5 @@
 {
-    "name": "increment/fundtransfercharge",
+    "name": "increment/finance/transfer",
     "description": "fund transfer",
     "authors": [
         {
@@ -15,13 +15,13 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Increment\\Finance\\FundTransferCharge": "src/"
+            "Increment\\Finance\\Transfer": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Increment\\Finance\\FundTransferCharge\\FundTransferChargeServiceProvider"
+                "Increment\\Finance\\Transfer\\TransferServiceProvider"
             ]
         }
     }

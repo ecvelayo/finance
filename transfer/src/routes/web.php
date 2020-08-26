@@ -4,7 +4,7 @@
 // Finances
 // Charges Controller
 $route = env('PACKAGE_ROUTE', '').'/fund_transfer_charges/';
-$controller = 'Increment\Finance\FundTransferCharge\Http\FundTransferChargeController@';
+$controller = 'Increment\Finance\Transfer\Http\FundTransferChargeController@';
 Route::post($route.'create', $controller."create");
 Route::post($route.'retrieve', $controller."retrieve");
 Route::post($route.'update', $controller."update");

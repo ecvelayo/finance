@@ -1,6 +1,6 @@
 <?php
 
-namespace Increment\Finance\FundTransferCharge\Models;
+namespace Increment\Finance\Transfer\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\APIModel;
