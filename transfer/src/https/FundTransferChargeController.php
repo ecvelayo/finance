@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\APIController;
 use Increment\Finance\Transfer\Models\FundTransferCharge;
 
-class FundTransferChargeController extends Controller
+class FundTransferChargeController extends APIController
 {
     function __construct(){
         $this->model = new FundTransferCharge();
