@@ -37,3 +37,4 @@ $route = env('PACKAGE_ROUTE', '').'/withdrawals/';
 $controller = 'Increment\Finance\Http\WithdrawalController@';
 Route::post($route.'create', $controller."create");
 Route::post($route.'retrieve', $controller."retrieve");
+Route::post($route.'retrieve_requests', $controller."retrieveRequests");
