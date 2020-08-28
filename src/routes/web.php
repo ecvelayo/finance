@@ -1,7 +1,4 @@
-  
 <?php
-
-
 // Finances
 // Ledger Controller
 $route = env('PACKAGE_ROUTE', '').'/ledger/';
