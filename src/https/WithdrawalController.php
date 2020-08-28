@@ -5,6 +5,7 @@ namespace Increment\Finance\Http;
 use Illuminate\Http\Request;
 use App\Http\Controllers\APIController;
 use Increment\Finance\Models\Withdrawal;
+use Increment\Finance\Models\Withdrawal;
 class WithdrawalController extends APIController
 {
 
@@ -32,6 +33,11 @@ class WithdrawalController extends APIController
       app($this->notificationSettingClass)->generateOtpById($data['account_id']);
       $this->response['data'] = true;
     }else if($data['stage'] == 2){
+      $notification = app($this->notificationSettingClass)->getByAccountIdAndCode($data['account_id'], $data['otp']);
+      if($notification == null){
+        $this->response['error'] = 'Invalid Code, please try again!';
+        return $this->response();
+      }
       $this->model = new Withdrawal();
       $data['status'] = 'pending';
       $data['code'] = $this->generateCode();
