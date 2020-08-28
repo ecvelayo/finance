@@ -5,7 +5,6 @@ namespace Increment\Finance\Http;
 use Illuminate\Http\Request;
 use App\Http\Controllers\APIController;
 use Increment\Finance\Models\Withdrawal;
-use Increment\Finance\Models\Withdrawal;
 class WithdrawalController extends APIController
 {
 
