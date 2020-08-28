@@ -1,0 +1,28 @@
+{
+    "name": "increment/finance/transfer",
+    "description": "fund transfer",
+    "authors": [
+        {
+            "name": "Ean Jason Velayo",
+            "email": "ecvelayo@gmail.com"
+        }, 
+        {
+            "name": "Kennette Canales",
+            "email": "kennettecanales@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Increment\\Finance\\Transfer": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Increment\\Finance\\Transfer\\TransferServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "increment/finance",
+    "description": "finance",
+    "authors": [
+        {
+            "name": "Ean Jason Velayo",
+            "email": "ecvelayo@gmail.com"
+        }, 
+        {
+            "name": "Kennette Canales",
+            "email": "kennettecanales@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Increment\\Finance": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Increment\\Finance\\FinanceProvider"
+            ]
+        }
+    }
+}

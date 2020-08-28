@@ -17,11 +17,11 @@ class CreateFundTransferChargesTable extends Migration
             $table->bigIncrements('id');
             $table->string('code');
             $table->string('scope');
-            $table->double('charge');
+            $table->double('charge', 8, 2);
             $table->string('currency');
             $table->string('destination');
-            $table->double('minimum_amount');
-            $table->double('maximum_amount');
+            $table->double('minimum_amount', 8, 2);
+            $table->double('maximum_amount', 8, 2);
             $table->timestamps();
             $table->softDeletes();
         });
