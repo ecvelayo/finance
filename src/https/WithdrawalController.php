@@ -5,6 +5,7 @@ namespace Increment\Finance\Http;
 use Illuminate\Http\Request;
 use App\Http\Controllers\APIController;
 use Increment\Finance\Models\Withdrawal;
+use Carbon\Carbon;
 class WithdrawalController extends APIController
 {
 
@@ -47,6 +48,23 @@ class WithdrawalController extends APIController
     }
     return $this->response();
   }
+
+   public function retrieveRequests(Request $request){
+      $data = $request->all();
+      $this->model = new Product();
+      $this->retrieveDB($data);
+      $result = $this->response['data'];
+      if(sizeof($result) > 0){
+        $i = 0;
+        foreach ($result as $key) {
+          $this->response['data'][$i]['name'] = $this->retrieveNameOnly($key['account_id']);
+          $this->response['data'][$i]['date_human'] = Carbon::createFromFormat('Y-m-d H:i:s', $result[$i]['created_at'])->copy()->tz($this->response['timezone'])->format('F j, Y H:i');
+          $i++;
+        }
+      }
+      $this->response['size'] = Product::count();
+      return $this->response();
+    }
 
   public function generateCode(){
     $code = 'wid_'.substr(str_shuffle($this->codeSource), 0, 60);
