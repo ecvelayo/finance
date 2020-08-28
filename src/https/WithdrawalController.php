@@ -51,7 +51,7 @@ class WithdrawalController extends APIController
 
    public function retrieveRequests(Request $request){
       $data = $request->all();
-      $this->model = new Product();
+      $this->model = new Withdrawal();
       $this->retrieveDB($data);
       $result = $this->response['data'];
       if(sizeof($result) > 0){
@@ -62,7 +62,7 @@ class WithdrawalController extends APIController
           $i++;
         }
       }
-      $this->response['size'] = Product::count();
+      $this->response['size'] = Withdrawal::count();
       return $this->response();
     }
 
