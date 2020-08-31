@@ -72,8 +72,8 @@ class LedgerController extends APIController
                 ])
                 ->where('account_id', '=', $data['account_id'])
                 ->where('account_code', '=', $data['account_code'])
-                ->offset($data['offset'])
-                ->limit($data['limit'])
+                ->offset(isset($data['offset']) ? $data['offset'] : 0)
+                ->limit(isset($data['limit']) ? $data['limit'] : 5)
                 ->get();
 
       $array = array();
