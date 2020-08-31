@@ -67,16 +67,7 @@ class LedgerController extends APIController
 
     public function history(Request $request){
       $data = $request->all();
-      $result = Ledger::select([
-                  DB::raw('SQL_CALC_FOUND_ROWS id'),
-                  'code',
-                  'account_code',
-                  'amount',
-                  'description',
-                  'currency',
-                  'payment_payload',
-                  'created_at'
-                ])
+      $result = Ledger::select('code', 'account_code', 'amount', 'description', 'currency', 'payment_payload', 'created_at')
                 ->where('account_id', '=', $data['account_id'])
                 ->where('account_code', '=', $data['account_code'])
                 ->offset(isset($data['offset']) ? $data['offset'] : 0)
@@ -89,7 +80,6 @@ class LedgerController extends APIController
         $array[] = $key;
       }
 
-      $this->response['size'] = DB::select("SELECT FOUND_ROWS() as 'rows'")[0]->rows;
       $this->response['data'] = $array;
       return $this->response();
     }
