@@ -64,6 +64,28 @@ class LedgerController extends APIController
       return $this->response();
     }
 
+    public function history(Request $request){
+      $data = $request->all();
+      $result = Ledger::select('code', 'account_code', 'amount', 'description', 'currency', 'payment_payload', 'created_at')
+                ->select([
+                  DB::raw('SQL_CALC_FOUND_ROWS id')
+                ])
+                ->where('account_id', '=', $data['account_i'])
+                ->where('account_code', '=', $data['account_code'])
+                ->offset($data['offset'])
+                ->limit($data['limit'])
+                ->get();
+      $array = array();
+      foreach ($result as $key) {
+        $key['created_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $key['created_at'])->copy()->tz($this->response['timezone'])->format('F j, Y H:i A');
+        $array[] = $key;
+      }
+
+      $this->response['size'] = DB::select("SELECT FOUND_ROWS() as 'rows'")[0]->rows;
+      $this->response['data'] = json_decode($tempResult, true);
+      return $this->response();
+    }
+
     public function retrieve(Request $request){
       //grabs by code
       //TODO: add security check for admin to grab bulk data
