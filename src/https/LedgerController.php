@@ -70,11 +70,12 @@ class LedgerController extends APIController
                 ->select([
                   DB::raw('SQL_CALC_FOUND_ROWS id')
                 ])
-                ->where('account_id', '=', $data['account_i'])
+                ->where('account_id', '=', $data['account_id'])
                 ->where('account_code', '=', $data['account_code'])
                 ->offset($data['offset'])
                 ->limit($data['limit'])
                 ->get();
+
       $array = array();
       foreach ($result as $key) {
         $key['created_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $key['created_at'])->copy()->tz($this->response['timezone'])->format('F j, Y H:i A');
@@ -82,7 +83,7 @@ class LedgerController extends APIController
       }
 
       $this->response['size'] = DB::select("SELECT FOUND_ROWS() as 'rows'")[0]->rows;
-      $this->response['data'] = json_decode($tempResult, true);
+      $this->response['data'] = $array;
       return $this->response();
     }
 
