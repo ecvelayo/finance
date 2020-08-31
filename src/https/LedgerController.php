@@ -73,14 +73,13 @@ class LedgerController extends APIController
                 ->offset(isset($data['offset']) ? $data['offset'] : 0)
                 ->limit(isset($data['limit']) ? $data['limit'] : 5)
                 ->get();
-
-      $array = array();
+      $i = 0;
       foreach ($result as $key) {
-        $key['created_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $key['created_at'])->copy()->tz($this->response['timezone'])->format('F j, Y H:i A');
-        $array[] = $key;
+        $result[$i]['created_at_human'] = Carbon::createFromFormat('Y-m-d H:i:s', $result[$i]['created_at'])->copy()->tz($this->response['timezone'])->format('F j, Y H:i A');
+        $i++;
       }
 
-      $this->response['data'] = $array;
+      $this->response['data'] = $result;
       return $this->response();
     }
 
