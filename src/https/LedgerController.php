@@ -72,6 +72,7 @@ class LedgerController extends APIController
                 ->where('account_code', '=', $data['account_code'])
                 ->offset(isset($data['offset']) ? $data['offset'] : 0)
                 ->limit(isset($data['limit']) ? $data['limit'] : 5)
+                ->orderBy('created_at', 'desc')
                 ->get();
       $i = 0;
       foreach ($result as $key) {
