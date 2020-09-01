@@ -15,7 +15,7 @@ class UpdateFundTransferChargesTableAddEffectiveDate extends Migration
     {
         //
         Schema::table('fund_transfer_charges', function (Blueprint $table){
-            $table->dateTime('effective_date')->after("maximum_amount");
+            $table->dateTime('effective_date')->after("maximum_amount")->nullable();;
         });
     }
 
